@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from '@mama-money/app.component';
 
-import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
