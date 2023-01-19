@@ -1,5 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { finalize, interval, Observable, shareReplay, startWith, Subject, switchMap, takeUntil, tap } from 'rxjs';
+import {
+    finalize,
+    interval,
+    merge,
+    Observable,
+    shareReplay,
+    startWith,
+    Subject,
+    switchMap,
+    takeUntil,
+    tap
+} from 'rxjs';
 import { WeatherService } from '@mama-money/services/weather.service';
 import { PlaceDetailModel } from '@mama-money/models/place-detail.model';
 
@@ -11,6 +22,7 @@ import { PlaceDetailModel } from '@mama-money/models/place-detail.model';
 export class AppComponent implements OnInit, OnDestroy {
     public isLoading = false;
     private readonly destroy$: Subject<void> = new Subject<void>();
+    private readonly retryClicked$ = new Subject<void>();
     private readonly geocodeLocation$: Observable<PlaceDetailModel>;
     private readonly interval$: Observable<number>;
 
@@ -28,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit(): void {
-        this.interval$.pipe(
+        merge(this.interval$, this.retryClicked$).pipe(
             switchMap(() => this.geocodeLocation$),
             switchMap(res => this.weatherService.getLocationWeather(res)),
             takeUntil(this.destroy$),
@@ -38,5 +50,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
     public ngOnDestroy(): void {
         this.destroy$.next();
+    }
+
+    public retryNow(): void {
+        this.retryClicked$.next();
     }
 }
