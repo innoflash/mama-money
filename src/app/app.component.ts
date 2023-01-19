@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { finalize, interval, Observable, shareReplay, startWith, Subject, switchMap, takeUntil } from 'rxjs';
+import { finalize, interval, Observable, shareReplay, startWith, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { WeatherService } from '@mama-money/services/weather.service';
 import { PlaceDetailModel } from '@mama-money/models/place-detail.model';
 
@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     public constructor(private readonly weatherService: WeatherService) {
         this.interval$ = interval(1000 * 60 * 20).pipe(
+            tap(() => this.isLoading = true),
             takeUntil(this.destroy$),
             startWith(0)
         );
