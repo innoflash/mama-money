@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { finalize, interval, Observable, shareReplay, Subject, switchMap, takeUntil } from 'rxjs';
+import { finalize, interval, Observable, shareReplay, startWith, Subject, switchMap, takeUntil } from 'rxjs';
 import { WeatherService } from '@mama-money/services/weather.service';
 import { PlaceDetailModel } from '@mama-money/models/place-detail.model';
 
@@ -15,7 +15,10 @@ export class AppComponent implements OnInit, OnDestroy {
     private readonly interval$: Observable<number>;
 
     public constructor(private readonly weatherService: WeatherService) {
-        this.interval$ = interval(1000 * 60 * 20).pipe(takeUntil(this.destroy$));
+        this.interval$ = interval(1000 * 60 * 20).pipe(
+            takeUntil(this.destroy$),
+            startWith(0)
+        );
 
         this.geocodeLocation$ = this.weatherService.geocodeLocation().pipe(
             takeUntil(this.destroy$),
@@ -24,9 +27,8 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit(): void {
-        this.interval$.subscribe(console.log);
-
-        this.geocodeLocation$.pipe(
+        this.interval$.pipe(
+            switchMap(() => this.geocodeLocation$),
             switchMap(res => this.weatherService.getLocationWeather(res)),
             takeUntil(this.destroy$),
             finalize(() => this.isLoading = false)
