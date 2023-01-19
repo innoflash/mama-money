@@ -1,7 +1,7 @@
 export type PlaceDetailModel = {
     country: string;
     lat: number;
-    lng: number;
+    lon: number;
     name: string;
     state: string;
 }

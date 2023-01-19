@@ -12,7 +12,7 @@ export class ApiKeyInterceptor implements HttpInterceptor {
     public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         request = request.clone({
             setParams: {
-                apiKey: environment.openWeatherAPIKey
+                appid: environment.openWeatherAPIKey
             }
         });
 

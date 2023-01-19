@@ -20,4 +20,15 @@ export class WeatherService {
             }
         }).pipe(map(res => res[0]));
     }
+
+    public getLocationWeather(place: PlaceDetailModel){
+        return this.http.get(`${environment.apiUrls.weather}/onecall`, {
+            params: {
+                lat: place.lat,
+                lon: place.lon,
+                exclude: 'alerts',
+                units: 'metric'
+            }
+        });
+    }
 }
