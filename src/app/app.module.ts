@@ -12,6 +12,7 @@ import { HourlyWeatherBodyComponent } from './components/hourly-weather-body/hou
 import { WeatherIconPipe } from './pipes/weather-icon.pipe';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WeatherFilterPipe } from './pipes/weather-filter.pipe';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         TimestampToTimePipe,
         TemperatureUnitPipe,
         HourlyWeatherBodyComponent,
-        WeatherIconPipe
+        WeatherIconPipe,
+        WeatherFilterPipe
     ],
     imports: [
         BrowserModule,
