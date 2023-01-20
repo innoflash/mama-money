@@ -3,11 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from '@mama-money/app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ApiKeyInterceptor } from '@mama-money/interceptors/api-key.interceptor';
+import {
+    HourlyWeatherStripComponent
+} from '@mama-money/components/hourly-weather-strip/hourly-weather-strip.component';
 
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        HourlyWeatherStripComponent
     ],
     imports: [
         BrowserModule,

@@ -20,7 +20,11 @@
                     Weather has gone below 15 degrees
                 </div>
             </div>
-            <div class="col-md-6">dffdg</div>
+            <div class="col-md-6">
+                <div class="card">
+                    <app-hourly-weather-strip [weather]="weatherForecast.current"></app-hourly-weather-strip>
+                </div>
+            </div>
         </div>
     </ng-container>
 
