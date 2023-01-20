@@ -28,7 +28,7 @@ export class AppComponent implements OnDestroy {
             startWith(0)
         );
 
-        this.geocodeLocation$ = this.weatherService.geocodeLocation('Johannesburg').pipe(
+        this.geocodeLocation$ = this.weatherService.geocodeLocation().pipe(
             takeUntil(this.destroy$),
             shareReplay()
         );
