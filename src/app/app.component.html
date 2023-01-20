@@ -38,6 +38,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center">Today`s Hourly Updates</h2>
+                <accordion [isAnimated]="true">
+                    <accordion-group class="mb-1" *ngFor="let hourlyWeather of weatherForecast.hourly;">
+                        <div class="d-flex align-items-center justify-content-between" accordion-heading>
+                            <app-hourly-weather-strip class="flex-fill" [weather]="hourlyWeather"></app-hourly-weather-strip>
+                            <img src="/assets/images/down-arrow.png" alt="">
+                        </div>
+                        <app-hourly-weather-body [weather]="hourlyWeather"></app-hourly-weather-body>
+                    </accordion-group>
+                </accordion>
+            </div>
+        </div>
     </ng-container>
 
 </div>

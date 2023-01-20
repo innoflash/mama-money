@@ -10,6 +10,8 @@ import { TimestampToTimePipe } from '@mama-money/pipes/timestamp-to-time.pipe';
 import { TemperatureUnitPipe } from './pipes/temperature-unit.pipe';
 import { HourlyWeatherBodyComponent } from './components/hourly-weather-body/hourly-weather-body.component';
 import { WeatherIconPipe } from './pipes/weather-icon.pipe';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { WeatherIconPipe } from './pipes/weather-icon.pipe';
     ],
     imports: [
         BrowserModule,
-        HttpClientModule
+        HttpClientModule,
+        BrowserAnimationsModule,
+        AccordionModule.forRoot(),
     ],
     providers: [
         {
