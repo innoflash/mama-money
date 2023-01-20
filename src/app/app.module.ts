@@ -6,12 +6,14 @@ import { ApiKeyInterceptor } from '@mama-money/interceptors/api-key.interceptor'
 import {
     HourlyWeatherStripComponent
 } from '@mama-money/components/hourly-weather-strip/hourly-weather-strip.component';
+import { TimestampToTimePipe } from '@mama-money/pipes/timestamp-to-time.pipe';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        HourlyWeatherStripComponent
+        HourlyWeatherStripComponent,
+        TimestampToTimePipe
     ],
     imports: [
         BrowserModule,
