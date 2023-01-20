@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <span>{{ weather.dt | timestampToTime }}</span>
             <div class="p-2"></div>
-            <h1>{{ weather.temp }}</h1>
+            <h1>{{ weather.temp | temperatureUnit | async }}</h1>
         </div>
     </div>
     <div class="col-md-5">fdsfdf</div>
