@@ -14,3 +14,5 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ```Found working with RxJS more exciting as usual. :)```
+### Issues Encountered
+I had more of a security issue with OpenWeather API Key. The key is here exposed but on a regular I would have used bash scripts to set the key before building the project and auto-deploy it.
