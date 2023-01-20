@@ -14,6 +14,10 @@ export class TemperatureUnitService {
         this.temperatureUnit$ = this.temperatureUnitSubject$.asObservable();
     }
 
+    public get currentUnit(): TemperatureUnit {
+        return this.temperatureUnitSubject$.value;
+    }
+
     public onUnitChange(): Observable<TemperatureUnit> {
         return this.temperatureUnit$;
     }
@@ -22,7 +26,7 @@ export class TemperatureUnitService {
         return this.temperatureUnitSubject$.next(metric);
     }
 
-    public toggleMetric(): void {
+    public toggleUnit(): void {
         if (this.temperatureUnitSubject$.value === TemperatureUnit.CELSIUS) {
             return this.setMetric(TemperatureUnit.FAHRENHEIT);
         }
