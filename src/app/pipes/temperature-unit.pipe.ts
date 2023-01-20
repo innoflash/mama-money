@@ -16,7 +16,7 @@ export class TemperatureUnitPipe implements PipeTransform {
             map(unit => {
                 const temperature = unit === TemperatureUnit.CELSIUS
                     ? value
-                    : (value * 9 / 5) + 32;
+                    : (value * (9 / 5)) + 32;
 
                 return `${ Math.ceil(temperature) }°${ unit }`;
             })

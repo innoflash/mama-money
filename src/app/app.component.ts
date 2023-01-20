@@ -14,6 +14,7 @@ import {
 import { WeatherService } from '@mama-money/services/weather.service';
 import { PlaceDetailModel } from '@mama-money/models/place-detail.model';
 import { WeatherResponse } from '@mama-money/models/weather.models';
+import { TemperatureUnitService } from '@mama-money/services/temperature-unit.service';
 
 @Component({
     selector: 'app-root',
@@ -28,7 +29,10 @@ export class AppComponent implements OnDestroy {
     private readonly geocodeLocation$: Observable<PlaceDetailModel>;
     private readonly interval$: Observable<number>;
 
-    public constructor(private readonly weatherService: WeatherService) {
+    public constructor(
+        private readonly weatherService: WeatherService,
+        private readonly temperatureUnitService: TemperatureUnitService
+    ) {
         this.interval$ = interval(1000 * 60 * 20).pipe(
             tap(() => this.isLoading = true),
             takeUntil(this.destroy$),
@@ -56,5 +60,9 @@ export class AppComponent implements OnDestroy {
 
     public retryNow(): void {
         this.retryClicked$.next();
+    }
+
+    public toggleTemperatureUnit(): void {
+        return this.temperatureUnitService.toggleUnit();
     }
 }

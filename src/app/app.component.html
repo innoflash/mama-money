@@ -4,9 +4,15 @@
     <div class="d-flex justify-content-between align-items-center mt-2">
         <h4 *ngIf="isLoading">Loading weather for Cape Town ...</h4>
         <h4 *ngIf="!isLoading">Weather for Cape Town</h4>
-        <button class="btn btn-success" (click)="retryNow()">
-            Retry Now
-        </button>
+        <div>
+            <button class="btn btn-success" (click)="retryNow()">
+                Retry Now
+            </button>
+            <button class="btn btn-primary ms-2" (click)="toggleTemperatureUnit()">
+                Convert to
+            </button>
+        </div>
+
     </div>
 
     <ng-container *ngIf="(weatherForecast$ | async) as weatherForecast">
