@@ -8,6 +8,8 @@ import {
 } from '@mama-money/components/hourly-weather-strip/hourly-weather-strip.component';
 import { TimestampToTimePipe } from '@mama-money/pipes/timestamp-to-time.pipe';
 import { TemperatureUnitPipe } from './pipes/temperature-unit.pipe';
+import { HourlyWeatherBodyComponent } from './components/hourly-weather-body/hourly-weather-body.component';
+import { WeatherIconPipe } from './pipes/weather-icon.pipe';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { TemperatureUnitPipe } from './pipes/temperature-unit.pipe';
         AppComponent,
         HourlyWeatherStripComponent,
         TimestampToTimePipe,
-        TemperatureUnitPipe
+        TemperatureUnitPipe,
+        HourlyWeatherBodyComponent,
+        WeatherIconPipe
     ],
     imports: [
         BrowserModule,
