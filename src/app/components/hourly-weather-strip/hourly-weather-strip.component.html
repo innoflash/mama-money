@@ -1,12 +1,12 @@
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
         <div class="d-flex justify-content-between align-items-center">
-            <span class="font-weight-bold">{{ weather.dt | timestampToTime }}</span>
+            <span class="font-weight-bold text-nowrap">{{ weather.dt | timestampToTime }}</span>
             <img [src]="weather.weather[0].icon | weatherIcon" [alt]="weather.uvi">
             <h1>{{ weather.temp | temperatureUnit | async }}</h1>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
         <div class="d-flex justify-content-center align-items-center h-100">
             Feels like {{ weather.feels_like | temperatureUnit | async }}
         </div>
