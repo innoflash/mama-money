@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
     finalize,
     interval,
@@ -13,14 +13,16 @@ import {
 } from 'rxjs';
 import { WeatherService } from '@mama-money/services/weather.service';
 import { PlaceDetailModel } from '@mama-money/models/place-detail.model';
+import { WeatherResponse } from '@mama-money/models/weather.models';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styles: []
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnDestroy {
     public isLoading = false;
+    public readonly weatherForecast$: Observable<WeatherResponse>;
     private readonly destroy$: Subject<void> = new Subject<void>();
     private readonly retryClicked$ = new Subject<void>();
     private readonly geocodeLocation$: Observable<PlaceDetailModel>;
@@ -37,15 +39,15 @@ export class AppComponent implements OnInit, OnDestroy {
             takeUntil(this.destroy$),
             shareReplay()
         );
-    }
 
-    public ngOnInit(): void {
-        merge(this.interval$, this.retryClicked$).pipe(
+        this.retryClicked$.pipe(tap(() => this.isLoading = true));
+
+        this.weatherForecast$ = merge(this.interval$, this.retryClicked$).pipe(
             switchMap(() => this.geocodeLocation$),
             switchMap(res => this.weatherService.getLocationWeather(res)),
             takeUntil(this.destroy$),
             finalize(() => this.isLoading = false)
-        ).subscribe(console.log);
+        );
     }
 
     public ngOnDestroy(): void {
