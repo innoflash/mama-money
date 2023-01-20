@@ -30,7 +30,7 @@ export type WeatherDetailModel = {
     weather: WeatherModel[];
 };
 
-export type DailyWeatherModel = WeatherDetailModel & {
+export type DailyWeatherModel = Omit<WeatherDetailModel, 'feels_like'> & {
     feels_like: DayTimesModel,
     temp: DayTimesModel & {
         min: number;

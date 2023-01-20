@@ -13,6 +13,7 @@ import { WeatherIconPipe } from './pipes/weather-icon.pipe';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WeatherFilterPipe } from './pipes/weather-filter.pipe';
+import { DailyWeatherComponent } from './components/daily-weather/daily-weather.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { WeatherFilterPipe } from './pipes/weather-filter.pipe';
         TemperatureUnitPipe,
         HourlyWeatherBodyComponent,
         WeatherIconPipe,
-        WeatherFilterPipe
+        WeatherFilterPipe,
+        DailyWeatherComponent
     ],
     imports: [
         BrowserModule,

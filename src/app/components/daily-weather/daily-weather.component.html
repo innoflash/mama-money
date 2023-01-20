@@ -1,0 +1,16 @@
+<h5 class="text-center">
+    <small>
+        {{ weather.dt | timestampToTime : 'DD MMM \'YY' }}
+    </small>
+</h5>
+<div class="d-flex justify-content-center">
+    <img [src]="weather.weather[0].icon | weatherIcon" [alt]="weather">
+</div>
+<div class="text-center">
+    <h6>
+        {{ weather.temp.max | temperatureUnit | async }}
+    </h6>
+    <h6>
+        <small class="text-muted">{{ weather.temp.min | temperatureUnit | async }}</small>
+    </h6>
+</div>
