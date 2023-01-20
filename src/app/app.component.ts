@@ -15,6 +15,7 @@ import { WeatherService } from '@mama-money/services/weather.service';
 import { PlaceDetailModel } from '@mama-money/models/place-detail.model';
 import { WeatherResponse } from '@mama-money/models/weather.models';
 import { TemperatureUnitService } from '@mama-money/services/temperature-unit.service';
+import { TemperatureUnit } from '@mama-money/models/temperature-unit';
 
 @Component({
     selector: 'app-root',
@@ -52,6 +53,14 @@ export class AppComponent implements OnDestroy {
             takeUntil(this.destroy$),
             finalize(() => this.isLoading = false)
         );
+    }
+
+    public get nextTemperatureUnit(): string {
+        if(this.temperatureUnitService.currentUnit === TemperatureUnit.CELSIUS){
+            return 'Fahrenheits';
+        }
+
+        return 'Celsius';
     }
 
     public ngOnDestroy(): void {
