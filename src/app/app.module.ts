@@ -7,13 +7,15 @@ import {
     HourlyWeatherStripComponent
 } from '@mama-money/components/hourly-weather-strip/hourly-weather-strip.component';
 import { TimestampToTimePipe } from '@mama-money/pipes/timestamp-to-time.pipe';
+import { TemperatureUnitPipe } from './pipes/temperature-unit.pipe';
 
 
 @NgModule({
     declarations: [
         AppComponent,
         HourlyWeatherStripComponent,
-        TimestampToTimePipe
+        TimestampToTimePipe,
+        TemperatureUnitPipe
     ],
     imports: [
         BrowserModule,
