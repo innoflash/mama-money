@@ -3,16 +3,44 @@
         <table class="table table-striped">
             <tbody>
             <tr>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>
+                    <small>UV Index</small>
+                </td>
+                <td class="text-end">
+                    <small>
+                        {{ weather.uvi }} Low
+                    </small>
+                </td>
             </tr>
             <tr>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <td>
+                    <small>Wind Speed</small>
+                </td>
+                <td class="text-end">
+                    <small>
+                        {{ weather.wind_speed }} m/s
+                    </small>
+                </td>
             </tr>
             <tr>
-                <td>the Bird</td>
-                <td>@twitter</td>
+                <td>
+                    <small>Wind Gusts</small>
+                </td>
+                <td class="text-end">
+                    <small>
+                        {{ weather.wind_gust }} m/s
+                    </small>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <small>Pressure</small>
+                </td>
+                <td class="text-end">
+                    <small>
+                        {{ weather.pressure }} hPa
+                    </small>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -21,16 +49,44 @@
         <table class="table table-striped">
             <tbody>
             <tr>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>
+                    <small>Dew Point</small>
+                </td>
+                <td class="text-end">
+                    <small>
+                        {{ weather.dew_point  | temperatureUnit | async}}
+                    </small>
+                </td>
             </tr>
             <tr>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <td>
+                    <small>Clouds</small>
+                </td>
+                <td class="text-end">
+                    <small>
+                        {{ weather.clouds }} %
+                    </small>
+                </td>
             </tr>
             <tr>
-                <td>the Bird</td>
-                <td>@twitter</td>
+                <td>
+                    <small>Humidity</small>
+                </td>
+                <td class="text-end">
+                    <small>
+                        {{ weather.humidity }} %
+                    </small>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <small>Visibility</small>
+                </td>
+                <td class="text-end">
+                    <small>
+                        {{ weather.visibility }} m
+                    </small>
+                </td>
             </tr>
             </tbody>
         </table>

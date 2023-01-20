@@ -1,16 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import {
-    finalize,
-    interval,
-    merge,
-    Observable,
-    shareReplay,
-    startWith,
-    Subject,
-    switchMap,
-    takeUntil,
-    tap
-} from 'rxjs';
+import { interval, merge, Observable, shareReplay, startWith, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { WeatherService } from '@mama-money/services/weather.service';
 import { PlaceDetailModel } from '@mama-money/models/place-detail.model';
 import { WeatherResponse } from '@mama-money/models/weather.models';
@@ -35,7 +24,6 @@ export class AppComponent implements OnDestroy {
         private readonly temperatureUnitService: TemperatureUnitService
     ) {
         this.interval$ = interval(1000 * 60 * 20).pipe(
-            tap(() => this.isLoading = true),
             takeUntil(this.destroy$),
             startWith(0)
         );
@@ -45,18 +33,18 @@ export class AppComponent implements OnDestroy {
             shareReplay()
         );
 
-        this.retryClicked$.pipe(tap(() => this.isLoading = true));
-
         this.weatherForecast$ = merge(this.interval$, this.retryClicked$).pipe(
+            tap(() => this.isLoading = true),
+            takeUntil(this.destroy$),
             switchMap(() => this.geocodeLocation$),
             switchMap(res => this.weatherService.getLocationWeather(res)),
-            takeUntil(this.destroy$),
-            finalize(() => this.isLoading = false)
+            //finalize(() => this.isLoading = false) //TODO figure out a better to stop this since this observable does not complete.
+            tap(() => this.isLoading = false)
         );
     }
 
     public get nextTemperatureUnit(): string {
-        if(this.temperatureUnitService.currentUnit === TemperatureUnit.CELSIUS){
+        if (this.temperatureUnitService.currentUnit === TemperatureUnit.CELSIUS) {
             return 'Fahrenheits';
         }
 
