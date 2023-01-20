@@ -6,6 +6,14 @@
             <h1>{{ weather.temp | temperatureUnit | async }}</h1>
         </div>
     </div>
-    <div class="col-md-5">fdsfdf</div>
-    <div class="col-md-3">sdfdsfdsf</div>
+    <div class="col-md-5">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            Feels like {{ weather.feels_like | temperatureUnit | async }}
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <h2>{{ weather.weather[0].main }}</h2>
+        </div>
+    </div>
 </div>

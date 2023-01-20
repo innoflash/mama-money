@@ -1,7 +1,7 @@
 export type WeatherModel = {
     description: string;
     icon: string;
-    man: string;
+    main: string;
     id: number;
 };
 
